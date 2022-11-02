@@ -1,4 +1,4 @@
-![logo]
+[![logo]](#)
 
 [![discord]](https://discord.gg/w8cYq5R6)
 
