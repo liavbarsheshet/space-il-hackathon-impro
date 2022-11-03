@@ -9,8 +9,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib import pyplot as plt
 from sklearn.cluster import KMeans
 
-ImagesPath = ""
-
+ImagesPath = "../assets/images/*"
 
 # Creates custom plot and then returns figure to add to pdf
 def setPlot(img, title, xLabel, yLabel, size=(10, 7)):
@@ -37,7 +36,7 @@ matplotlib.use('Agg')  # Opens the plot not in runtime
 
 # Fetch the Image files from folder path.
 images = glob.glob(ImagesPath)
-
+print(images)
 # Iterating through images src. img = image url, images = array of image urls
 for img in images:
     # Fetch hs image data from file path
@@ -45,6 +44,8 @@ for img in images:
 
     # Always the last key will be img name
     imgName = list(curImg.keys())[-1]
+
+    pdf = PdfPages(f'./{imgName}.pdf')
 
     # Converts the image pixels to 3D Array
     hsImg = np.asarray(curImg[imgName])
@@ -63,6 +64,7 @@ for img in images:
             "Some Title",
             "X",
             "Y")
+        pdf.savefig(figure)
 
     # This part is for pre-processing data
     dataSet = []
@@ -99,33 +101,6 @@ for img in images:
             "Some Title",
             "X",
             "Y")
-
-
-pdf = None
-
-
-# PDF Handling Functions
-
-# Opens a new or old pdf file
-def pdfOpen(file):
-    if pdf != None:
-        return
-    pdf = PdfPages(file)
-
-# Close the current pdf file
-
-
-def pdfClose():
-    if (pdf == None):
-        return
+        pdf.savefig(figure)
     pdf.close()
-    pdf = None
-
-# Saves figure to pdf
-
-
-def addFigureToPdf(figure):
-    pdf.savefig(figure)
-
-
 # TODO: Please explore  matplotlib.backends.backend_pdf pdf creator lib
