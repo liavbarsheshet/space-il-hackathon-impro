@@ -36,7 +36,6 @@ matplotlib.use('Agg')  # Opens the plot not in runtime
 
 # Fetch the Image files from folder path.
 images = glob.glob(ImagesPath)
-print(images)
 # Iterating through images src. img = image url, images = array of image urls
 for img in images:
     # Fetch hs image data from file path
@@ -65,7 +64,6 @@ for img in images:
             "X",
             "Y")
         pdf.savefig(figure)
-
     # This part is for pre-processing data
     dataSet = []
 
@@ -79,7 +77,6 @@ for img in images:
 
     # This is how many groups of clusters you want to differ
     segments = [2, 3, 4, 5]
-
     for cluster in segments:
         # Use KMeans algorithm to cluster the image.
         kMeans = KMeans(n_clusters=cluster)
@@ -94,13 +91,15 @@ for img in images:
             for y in range(0, hsImgSize[1]):
                 # Fill the pixels matrix with information about clustering
                 # TODO: We need to check about the reshape parameters
+                print(x,y)
                 pixels[x, y] = kMeans.predict(hsImg[x, y, :].reshape(1, -1))
-
+        
         figure = setPlot(
             pixels,  # Note here we send the pixels
             "Some Title",
             "X",
             "Y")
+
         pdf.savefig(figure)
     pdf.close()
 # TODO: Please explore  matplotlib.backends.backend_pdf pdf creator lib
