@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 
-import lib.pdfLib as pdf
-import lib.plot as plot
+import coconut.lib.pdfLib as pdf
+import coconut.lib.plot as plot
 import sys
 
 # TODO: Need to change the algorithms
@@ -16,7 +16,7 @@ from sklearn.cluster import KMeans
 def clusterData(img, options):
     # Custom Segments
     segments = options['segments'] if 'segments' in options and isinstance(
-        options['segments'], list) else [3, 5, 7]
+        options['segments'], list) else [2, 3, 4, 5]
 
     # DataSet
     dataSet = img['data-set']
@@ -53,7 +53,7 @@ def compressBands(img):
     width = img['size'][0]
     height = img['size'][1]
     depth = img['size'][2]
-    components = 15
+    components = 41
 
     # Initialize Dataset
     zSum = []
@@ -118,7 +118,7 @@ def sampleLayers(img, layers):
             raise Exception('Invalid layers sample')
 
         figure = plot.createPlot(
-            img['blob'][:, :, layer], f"Sample {layer}nm", 'Width', 'Height')
+            img['blob'][:, :, layer], f"Band number {layer}", 'Width', 'Height')
         img['pdf'].addFigure(figure)
 
 
@@ -127,7 +127,7 @@ def processImages(images, options):
     if not isinstance(images, list):
         raise Exception('Invalid images')
 
-    pdfPage = pdf.PDF(f"./result/coconut")
+    pdfPage = pdf.PDF(f"./coconut/result/coconut")
     pdfPage.open()
     pdfPage.intro('COCONUT RESULT')
 

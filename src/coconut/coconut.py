@@ -1,4 +1,4 @@
-import lib.core as core
+import coconut.lib.core as core
 import glob as glob
 
 
