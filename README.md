@@ -25,7 +25,7 @@ _"The Coconut's"_
 - [Alex Baboshin](https://github.com/AxFISR), _Software Engineering Student at ORT Brauda_.
 - [Elshan Geydarov](https://github.com/TTuT6yJI), _Computer Science Student at the Technion_. 
 - [Liav Barsheshet](https://github.com/liavbarsheshet), _Computer Science Student at the Technion_.
-- [Noam Shacharor](https://github.com/noamshac), _Mechanical Engineering Student at the Ben Gurion University_
+- [Noam Shacharor](https://github.com/noamshac), _Mechanical Engineering Student at the Ben Gurion University_.
 - [Omri Arama](https://github.com/aramao), _Industrial Engineering Student at the Ben Gurion University_
 
 ## License
